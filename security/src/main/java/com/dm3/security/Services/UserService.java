@@ -1,7 +1,7 @@
 package com.dm3.security.Services;
 
 import com.dm3.security.DTO.UserRequestDTO;
-import com.dm3.security.entities.User;
+import com.dm3.security.entities.UserEntity;
 import com.dm3.security.enums.Role;
 import com.dm3.security.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,8 +18,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(UserRequestDTO dto) {
-        User user = new User();
+    public UserEntity createUser(UserRequestDTO dto) {
+        UserEntity user = new UserEntity();
 
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
