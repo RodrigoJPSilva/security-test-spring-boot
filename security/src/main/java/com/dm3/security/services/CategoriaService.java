@@ -3,6 +3,7 @@ package com.dm3.security.services;
 import java.util.List;
 
 import com.dm3.security.entity.Categoria;
+import com.dm3.security.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

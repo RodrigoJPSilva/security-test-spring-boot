@@ -1,6 +1,6 @@
 package com.dm3.security.repository;
 
-import com.example.ecomerce.entity.Usuario;
+import com.dm3.security.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
