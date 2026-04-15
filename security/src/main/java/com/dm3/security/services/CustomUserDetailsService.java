@@ -1,7 +1,7 @@
-package com.dm3.security.Services;
+package com.dm3.security.services;
 
-import com.dm3.security.entities.UserEntity;
-import com.dm3.security.repositories.UserRepository;
+import com.dm3.security.entity.Usuario;
+import com.dm3.security.repository.UsuarioRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,20 +10,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-    private final UserRepository userRepository;
+    private final UsuarioRepository repository;
 
-    public CustomUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public CustomUserDetailsService(UsuarioRepository usuarioRepository) {
+        this.repository = usuarioRepository;
     }
 
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByEmail(email);
+        Usuario user = repository.findByEmail(email);
         return User.builder()
                 .username(user.getEmail())
-                .password(user.getPassword())
-                .roles(user.getRole().name().replace("ROLE_",""))
+                .password(user.getSenha())
+                .roles(user.getRoles().getLast().name())
                 .build();
     }
 }
